@@ -1,0 +1,54 @@
+.blogPost-preview {
+  margin-bottom: 48px;
+}
+
+.blogPost-meta {
+  font-family: 'Eczar', serif;
+  font-weight: 500;
+  color: #999;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.blogPost-meta:after {
+  content: "";
+  display: block;
+  margin: 0;
+  width: 140px;
+  height: 2px;
+  margin-top: 2px;
+  background: linear-gradient(to right, #FF922E , rgba(254,223,21,0  ));
+}
+
+.blogPost-meta-category {
+  font-variant: small-caps;
+  text-transform: capitalize;
+  margin-left: 8px;
+}
+
+.blogPost-title {
+  font-size: 32px;
+  font-family: Open Sans;
+  font-weight: 600;
+  color: #4D4D4D;
+  margin-top: 24px;
+}
+
+a {
+  color: #4D4D4D;
+  text-decoration: none;
+}
+
+.blogPost-excerpt {
+  font-family: Nunito;
+  font-weight: 600;
+  font-size: 18px;
+  color: #BDBDBD;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.blogPost-shareIcon:hover {
+  fill: #FF922E;
+  cursor: pointer;
+}
