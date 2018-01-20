@@ -2,6 +2,9 @@ import React from 'react'
 import Link from 'gatsby-link'
 import {Helmet} from "react-helmet";
 
+import '../layouts/BlogPost/index.css';
+import './blog-post.css';
+
 const Template = ({data, location, pathContext}) => {
   const { markdownRemark: post } = data
   const { frontmatter, html } = post
@@ -9,13 +12,20 @@ const Template = ({data, location, pathContext}) => {
   const { next, prev } = pathContext
 
   return (
-    <div>
+    <div className="blogPost-container">
       <Helmet>
         <title>{title}</title>
       </Helmet>
+      <div className="blogPost-meta">
+        <div style={{display: 'flex'}}>
+          <div>{frontmatter.date}</div>
+          <div className="blogPost-meta-category">
+            {frontmatter.category}
+          </div>
+        </div>
+      </div>
       <div>
         <h1>{title}</h1>
-        <h3>{date}</h3>
 
         <div dangerouslySetInnerHTML={{__html: html}} />
 

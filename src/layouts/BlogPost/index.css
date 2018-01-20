@@ -28,8 +28,8 @@
 
 .blogPost-title {
   font-size: 32px;
-  font-family: Open Sans;
-  font-weight: 600;
+  font-family: 'Lora', serif;
+  font-weight: 700;
   color: #4D4D4D;
   margin-top: 24px;
 }
@@ -40,7 +40,7 @@ a {
 }
 
 .blogPost-excerpt {
-  font-family: Nunito;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: #BDBDBD;
