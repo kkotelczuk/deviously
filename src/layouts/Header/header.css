@@ -24,6 +24,10 @@
   text-decoration: none;
 }
 
+.header-title--link:hover {
+  text-decoration: none;
+}
+
 .header-logo {
   height: 70px;
   margin: 0;
@@ -31,7 +35,7 @@
 }
 
 .header-subtitle {
-  font-weight: normal;
+  font-weight: 400;
   line-height: 22px;
   font-size: 18px;
   color: #999999;

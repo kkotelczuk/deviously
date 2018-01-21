@@ -17,11 +17,9 @@ const BlogPostPreview = (props) => {
           </div>
         </div>
       </div>
-      <div className="blogPost-title">
-        <Link to={frontmatter.path}>
-          {frontmatter.title}
-        </Link>
-      </div>
+      <Link to={frontmatter.path} className="blogPost-title">
+        {frontmatter.title}
+      </Link>
       <div className="blogPost-excerpt">
         {frontmatter.excerpt}
       </div>

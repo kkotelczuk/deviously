@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import {Helmet} from "react-helmet";
+import { FaTag } from 'react-icons/lib/fa';
 
 import '../layouts/BlogPost/index.css';
 import './blog-post.css';
@@ -27,22 +28,34 @@ const Template = ({data, location, pathContext}) => {
       <div>
         <h1>{title}</h1>
 
-        <div dangerouslySetInnerHTML={{__html: html}} />
+        <div className="blogPost-content" dangerouslySetInnerHTML={{__html: html}} />
+        <div className="blogPost-tags">
+          <FaTag color="#555" size="1.2rem" className="blogPost-tagsIcon"/>
+          {frontmatter.tags.map( tag => {
+            return (
+              <Link className="blogPost-tag" to={`/tags/${tag}`}>
+                {tag}
+              </Link>
+            )
+          })}
+        </div>
 
-        <div>
-          {prev &&
-            <Link to={prev.frontmatter.path}>
-             Prev: {prev.frontmatter.title}
-            </Link>
-          }
-        </div>
-        <div>
-          {next &&
-            <Link to={next.frontmatter.path}>
-              Next: {next.frontmatter.title}
-            </Link>
-          }
-        </div>
+        {/*<div>
+          <div>
+            {prev &&
+              <Link to={prev.frontmatter.path}>
+               Poprzedni: {prev.frontmatter.title} >>
+              </Link>
+            }
+          </div>
+          <div>
+            {next &&
+              <Link to={next.frontmatter.path}>
+                {`<< Następny: ${next.frontmatter.title}`}
+              </Link>
+            }
+          </div>
+          </div>*/}
       </div>
     </div>
   )
