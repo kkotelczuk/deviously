@@ -7,12 +7,14 @@ import './header.css'
 const Header = () => {
   return  (
     <div className="header-container">
-      <Link to="/" className="header-title--container">
-        <img className="header-logo" src={logo} />
-        <div className="header-title">
-          eviously
-        </div>
-      </Link>
+      <div className="header-title--container">
+        <Link to="/" className="header-title--link">
+          <img className="header-logo" src={logo} />
+          <div className="header-title">
+            eviously
+          </div>
+        </Link>
+      </div>
       <div className="header-subtitle">
         opinie pomysły kodowanie
       </div>

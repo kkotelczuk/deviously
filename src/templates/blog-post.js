@@ -1,6 +1,10 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import {Helmet} from "react-helmet";
+import { FaTag } from 'react-icons/lib/fa';
+
+import '../layouts/BlogPost/index.css';
+import './blog-post.css';
 
 const Template = ({data, location, pathContext}) => {
   const { markdownRemark: post } = data
@@ -8,32 +12,47 @@ const Template = ({data, location, pathContext}) => {
   const { title, date } = frontmatter
   const { next, prev } = pathContext
 
+  const disqus_config = function () {
+    this.page.url = `https://deviously.pl/#!${frontmatter.path}`
+    this.page.identifier = "deviouslypl"
+  };
+
+  const d = document;
+  const s = d.createElement('script');
+  s.src = '//deviouslypl.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  s.async = true;
+  (d.head || d.body).appendChild(s);
+
   return (
-    <div>
+    <div className="blogPost-container">
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <div>
-        <h1>{title}</h1>
-        <h3>{date}</h3>
-
-        <div dangerouslySetInnerHTML={{__html: html}} />
-
-        <div>
-          {prev &&
-            <Link to={prev.frontmatter.path}>
-             Prev: {prev.frontmatter.title}
-            </Link>
-          }
-        </div>
-        <div>
-          {next &&
-            <Link to={next.frontmatter.path}>
-              Next: {next.frontmatter.title}
-            </Link>
-          }
+      <div className="blogPost-meta">
+        <div style={{display: 'flex'}}>
+          <div>{frontmatter.date}</div>
+          <div className="blogPost-meta-category">
+            {frontmatter.category}
+          </div>
         </div>
       </div>
+      <div>
+        <h1>{title}</h1>
+
+        <div className="blogPost-content" dangerouslySetInnerHTML={{__html: html}} />
+        <div className="blogPost-tags">
+          <FaTag color="#555" size="1.2rem" className="blogPost-tagsIcon"/>
+          {frontmatter.tags.map( tag => {
+            return (
+              <Link className="blogPost-tag" to={`/tags/${tag}`}>
+                {tag}
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+      <div id="disqus_thread"></div>
     </div>
   )
 }
