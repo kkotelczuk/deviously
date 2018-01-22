@@ -12,18 +12,6 @@ const Template = ({data, location, pathContext}) => {
   const { title, date } = frontmatter
   const { next, prev } = pathContext
 
-  const disqus_config = function () {
-    this.page.url = `https://deviously.pl/#!${frontmatter.path}`
-    this.page.identifier = "deviouslypl"
-  };
-
-  const d = document;
-  const s = d.createElement('script');
-  s.src = '//deviouslypl.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  s.async = true;
-  (d.head || d.body).appendChild(s);
-
   return (
     <div className="blogPost-container">
       <Helmet>
@@ -52,7 +40,6 @@ const Template = ({data, location, pathContext}) => {
           })}
         </div>
       </div>
-      <div id="disqus_thread"></div>
     </div>
   )
 }
