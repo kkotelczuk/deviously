@@ -26,6 +26,9 @@ Pierwsza wersja aplikacji iOS została wypuszczona w lutym 2015 roku, po zaledwi
 Warto jednak zwrócić uwagę na część poświęconą layoutowi. Należy przy tym pamiętać, że CSS jest ściśle powiązany z przeglądarką, z której nie korzystamy w React Native. Layout wyznacza położenie elementów ich wysokości, szerokości etc. Zamiast prób implementacji floatów, tabel czy innych potworków, wybór padł na **flexbox**. Dzięki temu można było wykorzystać wbudowane mechanizmy iOS do ustawienia elementów w widoku. Ale chwila, flexbox jest przecież związany ściśle z przeglądarką i tu pojawia się magia. Christopher Chedeau zaimplementował flexbox od zera w React Native **używając hardcorowej metody TDD**. Zaczął generować losowe testy frontendowe. Sprawdzał jaki będzie wynik w jego implementacji oraz w przeglądarce. Następnie znajdował pierwszy przypadek, który się wysypał, naprawiał i znów zaczynał od początku. Robił tak dopóki wszystkie testy nie zakończyły się powodzeniem. Całość tego procesu zajęła mu dwa tygodnie! Pamiętajmy, że na początku zaimplementowane zostały tylko najważniejsze rzeczy, czyli model flexbox, marginesy, paddingi oraz bordery.
 
 **W marcu 2015 React Native został projektem Open Source!** Latem tego samego roku światło dzienne ujrzała aplikacja Ads Manager na Android. Po udanym deploymencie, nadszedł czas na udostępnieni kodu pozwalającego tworzyć aplikacje Android przy użyciu RN. W sierpniu 2015 wydana została wersja 0.11 wspierająca budowanie natywnych aplikacji dla Android.
+
+![React Native history timeline](https://scontent-vie1-1.xx.fbcdn.net/v/t39.2365-6/12057200_1295196337174768_31095688_n.jpg?oh=3d2041a10bba6205f20c734f8a9a087f&oe=5B22D8D3)
+
 ## Już bardziej znana historia
 Dalszą część historii już znamy. Nagły skok popularności za oceanem, sceptycznie nastawione środowisko, jak wcześniej do Reacta, przełom i RN zaczyna wznosić się na wyżyny popularności.
 
