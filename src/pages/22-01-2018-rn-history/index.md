@@ -12,14 +12,14 @@ excerpt: "Kiedy to się zaczęło i dlaczego to w ogóle przetrwało?"
 Przygotowując się do prezentacji na meetup [Mobile Białystok](https://www.facebook.com/mobilebialystok/), trafiłem na [wystąpienie Christophera Chedeau z 2015 roku](https://www.youtube.com/watch?v=7rDsRXj9-cU). Ta prezentacja była pierwszym oficjalnym przedstawieniem architektury RN.
 
 ## Od szalonej idei do projektu
-Latem 2013 roku miał miejsce hackathon, podczas którego zrodził się pomysł narzędzia pozwalającego **tworzyć aplikacje mobilne korzystając z JavaScriptu**. Należy mieć na uwadze, że w tym czasie istniały już narzędzia pozwalające tworzyć aplikacje hybrydowe, jak PhoneGap, ale nie pozwalały na pisanie natywnych aplikacji. Ideą React Native było przeniesienie wszsytkich najlpeszy aspektów web delepomentu do mobile. Wszystko po to by móc szybciej przechodzić od pomysłu do produktu.
+Latem 2013 roku miał miejsce hackathon, podczas którego zrodził się pomysł narzędzia pozwalającego **tworzyć aplikacje mobilne korzystając z JavaScriptu**. Należy mieć na uwadze, że w tym czasie istniały już narzędzia pozwalające tworzyć aplikacje hybrydowe, jak PhoneGap, ale nie pozwalały na pisanie natywnych aplikacji. Ideą React Native było przeniesienie wszystkich najlepszych aspektów web delepomentu do mobile. Wszystko po to by móc szybciej przechodzić od pomysłu do produktu.
 
 > The idea of React Native meant we could bring all the things we loved
 > about developing for the web — such as fast iterations and having a
 > single team build the whole product — to mobile. It meant we could
 > move faster.
 
-Do połowy 2014 roku nad rozwijaniem React Native pracowało wciąż bardzo niewiele osób. Wszystko uległo zmianie kiedy zespół dostał pierwsze duże zadanie: **przygotowanie aplikacji Ads Manager dla iOS**. Celem było wypuszczenie pierwszej pełnoprawnej aplikacji w React Native działającej jak napisana w Objective-C. W drugiej połowie 2014 roku został powołany zespół odpowiedzialny za stworzenie aplikacji Androidowej w oparciu o React Native.
+Do połowy 2014 roku nad rozwijaniem React Native pracowało wciąż niewiele osób. Wszystko uległo zmianie kiedy zespół dostał pierwsze duże zadanie: **przygotowanie aplikacji Ads Manager dla iOS**. Celem było wypuszczenie pierwszej pełnoprawnej aplikacji w React Native działającej jak napisana w Objective-C. W drugiej połowie 2014 roku został powołany zespół odpowiedzialny za stworzenie aplikacji Androidowej w oparciu o React Native.
 ## It's alive!
 Pierwsza wersja aplikacji iOS została wypuszczona w lutym 2015 roku, po zaledwie **6 miesiącach pracy!** W styczniu tego roku miała też miejsce konferencja podczas której przedstawiony został React Native. Fragment tej właśnie konferencji przytoczyłem we wstępie. Christopher opowiadał o 3 fundamentach jakie przyświecały twórcom RN: *Touch handling, Native Components, Style & Layout*. Większą część prezentacji poświęcił temu ostatniemu bo to właśnie to odróznia aplikację mobilne od stron www. O dwóch pierwszych filarach napiszę szerzej przy okazji kolejnego artykułu.
 

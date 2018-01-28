@@ -1,12 +1,15 @@
-import React from 'react'
+'use strict';
+
+import React, { Component } from 'react';
 import Link from 'gatsby-link'
 
 import BlogPostPreview from '../layouts/BlogPost/BlogPostPreview.js';
 
-const IndexPage = ({data}) => {
-  const {edges: posts} = data.allMarkdownRemark
+class IdexPage extends Component {
+  render() {
+    const {edges: posts} = this.props.data.allMarkdownRemark
 
-  return (
+    return (
     <div>
       {posts.map(({node: post}) => {
         const { frontmatter } = post
@@ -18,7 +21,8 @@ const IndexPage = ({data}) => {
         )
       })}
     </div>
-)
+    );
+  }
 }
 
 export const query = graphql`
@@ -43,4 +47,4 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default IdexPage;
