@@ -22,8 +22,8 @@ Każdą aplikację React Native możemy podzielić na trzy części:
 - natywną
 - Java Script
 - most (Bridge)
--
-// untitled Diagram (1)
+
+![RN components](./images/rn-comp.png "React Native components")
 
 W części natywnej aplikacja uruchamia kilka wątków, z czego główny *Main Thread* odpowiada za jej stan, działanie w tle itp. Każdy natywny moduł wykorzystany w aplikacji posiada swój własny wątek. *Shadow Queue* jest zbiorem informacji o layout oraz shadow nodes.
 "Po drugiej stronie" mostu znajduje się pojedynczy wątek JavaScript. Jest to w dużym uproszczeniu maszyna witrualna, w której wykonuje się cały skrypt.
@@ -45,17 +45,19 @@ Mając przygotowaną konfigurację aplikacji silnik przechodzi do wykonywania ko
 ## JavaScript engine
 Każdy  język musi zostać przekompilowany do notacji rozumianej przez komputer, czyli kodu maszynowego. Kod JS, który piszemy jest abstrakcyjny i dzieli go bardzo daleka droga do kodu maszynowego. Stąd mimo twierdzenia, że ten język nie jest kompilowany to trzeba pamiętać, że gdzieś następuje jego transpilacja, kompilacja i wykonanie. Te gdzieś to właśnie maszyna wirtualna środowiska JS.
 Pierwszym krokiem jaki wykonuje VM jest skopiowanie bundle JS za każdym razem kiedy zostanie zmieniony. Następnie maszyna parsuje kod oraz rozmieszcza poszczególne elementy programu w drzewie składniowym. Na tej podstawie silnik generuje kod bajtowy. I te etapy są bardzo pracochłonne, stąd istnieje potrzeba ich optymalizacji.
-// jakis graf
+
 Wróćmy więc do kopiowania bundle. Zanim jeszcze plik js zostanie poddany parsowaniu, następuje sprawdzenie, które elementy rzeczywiście muszą zostać wygenerowane w tym momencie. Wszystkie pozostałe funkcje, komponenty, klasy etc. zostają przepuszczone przez *syntax checking*. Jeśli nie ma błędów składniowych JS niezbędny kod bajtowy zostaje wykonany i maszyna JS zaczyna cykl od początku.
 
 ## Aplikacja w akcji!
 
 Działanie aplikacji rozpoczyna się od wyrenderowania widoków. Tu do akcji wkracza mechanizm znany z React, odpowiednik VirtualDOM. Z jednej strony następuje wyrenderowanie gotowych widoków użytkownikowi - DOM, a w tle przechowywany jest obiekt, na którym przeprowadzane są wszystkie zmiany w UI. Dodtkowo nastepuje tu przygotowanie Layoutu aplikacji, czyli wartości znanych z css do natywnych właściwości obiektów wizualnych.
 
+![RN lifecycle](./images/RNLifecycle.png "React native application life cycle")
+
 Następnie aplikacja oczekuje na akcję wykonaną przez użytkownika, bądź jeden z komponentów np. doładowanie danych. To wyołuję kolejny łańcuch reakcji, który rozpoczyna się od sprawdzenia w module natywnym czy wymagana jest reakcja w części JavaScriptowej. Dobrym przykładem działania bez jej wykorzystania jest wyświetlenie natywnego AlertIOS z treścią błędu systemowego. Jesli natomiast komponent natywny nie posiada logiki niezbędnej do zareagowania na otrzymaną akcję nastepuje odwołanie do silnika JS. Tam kod jest przetwarzany i jesli wymagna jest zmiana działania modułu bądź jego wyglądu informacje o tym transferowane sa przez most.
 
 Most (Bridge) jest głównym elementem aplikacji React Native. Można by poświęcic temu oddzielny artykuł, teraz jednak przedstawie po krótce jego działanie. Ten element łączy kod natywny z JavaScript bundle. Każda akcja, dane czy też polecenia są tędy przesyłane i tak, to jest wąskie gardło całego procesu. Jeśli przez most dane byłyby przesyłane synchronicznie, to możnaby było wykonać jedną akcję jednocześnie, blokując przy tym działanie aplikacji. Co za tym idzie bridge wykorzystuje asynchroniczność do przesyłania danych.
-Dzięki temu możemy przesyłać dużą ilość danych, co za tym idzie most znów się zapycha. Koniecznie jest łączenie przesyłanych danych w większe paczki. Dzięki temu możemy przesłać dużo w krótkim czasie, ale… Nie możemy od tak spakować danych i ich przesłać. Najpierw należy je zserializować. Po drugiej tronie mostu dane muszą zotać przetłumaczone ponownie. Tak w dużym skrócie działa ten mechanizm. Po więcej zapraszam do obejrzenia tego (filmu)[], są tu również informację o tym jak można podglądać dane przechodzące przez most co daje duże pole do optymalizacji działania aplikacji.
+Dzięki temu możemy przesyłać dużą ilość danych, co za tym idzie most znów się zapycha. Koniecznie jest łączenie przesyłanych danych w większe paczki. Dzięki temu możemy przesłać dużo w krótkim czasie, ale… Nie możemy od tak spakować danych i ich przesłać. Najpierw należy je zserializować. Po drugiej tronie mostu dane muszą zotać przetłumaczone ponownie. Tak w dużym skrócie działa ten mechanizm. Po więcej zapraszam do obejrzenia tego [filmu](https://youtu.be/GiUo88TGebs), są tu również informację o tym jak można podglądać dane przechodzące przez most co daje duże pole do optymalizacji działania aplikacji.
 Skoro dane przebyły doroge przez most, JS bundle skomunikował się z natywnymi wątkami aplikacji czas na powrót do maszyny wirtualnej JS gdzie sprawdzane jest czy wykonanie zmian w widoku użytkownika jest konieczne. I wtedy użytkownik naciska przycisk jeszcze raz…
 
 ## Podsumowanie
